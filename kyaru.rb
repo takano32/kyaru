@@ -4,7 +4,7 @@ require 'yaml'
 # yaml 形式の設定ファイルを読み込む
 config = YAML.load_file("config.yml")
 # 設定ファイルがなかったら環境変数を読み込む
-unless config?
+unless config['discord_token']?
   config = ENV
 end
 
