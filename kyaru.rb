@@ -26,4 +26,9 @@ bot.message(with_text: 'peco') do |event|
   event.respond 'ヤバいですね☆'
 end
 
+# neko という発言があったらそのチャンネルで あたしの下僕にしてあげよっか……♪ と発言する
+bot.message(with_text: 'neko') do |event|
+  event.respond 'あたしの下僕にしてあげよっか……♪'
+end
+
 bot.run
