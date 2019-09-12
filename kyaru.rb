@@ -1,7 +1,12 @@
 require 'discordrb'
 require 'yaml'
 
+# yaml 形式の設定ファイルを読み込む
 config = YAML.load_file("config.yml")
+# 設定ファイルがなかったら環境変数を読み込む
+unless config?
+  config = ENV
+end
 
 bot = Discordrb::Bot.new token: config['discord_token']
 
