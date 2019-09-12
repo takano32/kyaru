@@ -15,4 +15,9 @@ bot.message(with_text: 'peco') do |event|
   event.respond 'ヤバいですね☆'
 end
 
+# hoge という発言があったらそのチャンネルで huga と発言する
+bot.message(with_text: 'hoge') do |event|
+  event.respond 'huga'
+end
+
 bot.run
