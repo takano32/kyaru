@@ -33,7 +33,7 @@ end
 previous = Time.new
 bot.heartbeat do |event|
   now = Time.new
-  if previous.minutes < now.minutes then
+  if previous.min < now.min then
     bot.send_message('#機械', 'https://gyazo.com/0e4a0ca3bf8bcfd46cd14e078da3fbba')
     previous = now
   end
