@@ -29,11 +29,12 @@ bot.message(with_text: 'neko') do |event|
   event.respond 'あたしの下僕にしてあげよっか……♪'
 end
 
-# 1分ごとに #機械 チャンネルで ヤバいわよ！！ 画像を発言する
+# 定期的な処理をする部分
 previous = Time.new
 bot.heartbeat do |event|
+  # 1時間に一回 #機械 チャンネルで ヤバいわよ！！ 画像を発言する（時報機能）
   now = Time.new
-  if previous.min < now.min then
+  if previous.hour < now.hour then
     bot.send_message('613223157423276053', 'https://gyazo.com/0e4a0ca3bf8bcfd46cd14e078da3fbba')
     previous = now
   end
