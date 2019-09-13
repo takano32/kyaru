@@ -12,8 +12,6 @@ rescue
     discord_token = ENV['DISCORD_TOKEN']
 end
 
-puts discord_token
-
 bot = Discordrb::Bot.new token: discord_token
 
 # kyaru という発言があったらそのチャンネルで 殺すぞ……！？ と発言する
@@ -29,6 +27,16 @@ end
 # neko という発言があったらそのチャンネルで あたしの下僕にしてあげよっか……♪ と発言する
 bot.message(with_text: 'neko') do |event|
   event.respond 'あたしの下僕にしてあげよっか……♪'
+end
+
+# 1分ごとに #機械 チャンネルで ヤバいわよ！！ 画像を発言する
+previous = Time.new.minutes
+bot.heartbeat do |event|
+  now = Time.new.minutes
+  if previous < now then
+    bot.send_message('#機械', 'https://gyazo.com/0e4a0ca3bf8bcfd46cd14e078da3fbba')
+    previous = now
+  end
 end
 
 bot.run
