@@ -30,10 +30,10 @@ bot.message(with_text: 'neko') do |event|
 end
 
 # 1分ごとに #機械 チャンネルで ヤバいわよ！！ 画像を発言する
-previous = Time.new.minutes
+previous = Time.new
 bot.heartbeat do |event|
-  now = Time.new.minutes
-  if previous < now then
+  now = Time.new
+  if previous.minutes < now.minutes then
     bot.send_message('#機械', 'https://gyazo.com/0e4a0ca3bf8bcfd46cd14e078da3fbba')
     previous = now
   end
