@@ -1,5 +1,8 @@
 # kyaru
 
+## How to contribute?
+ - https://scrapbox.io/neet/kyaru
+ 
 
 ## What is kyaru?
 
