@@ -26,7 +26,7 @@ end
 
 # hoge という発言があったらそのチャンネルで huga と発言する
 bot.message(with_text: 'hoge') do |event|
-  event.respond 'huga'
+  event.respond 'fuga'
 
 # neko という発言があったらそのチャンネルで あたしの下僕にしてあげよっか……♪ と発言する
 bot.message(with_text: 'neko') do |event|
