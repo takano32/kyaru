@@ -19,6 +19,8 @@ end
 bot = Discordrb::Bot.new token: discord_token
 db  = Sequel.connect postgres_url
 
+money_primary_key = 1
+
 # キャルの所持金を定義する
 class Money < Sequel::Model; end
 money = Money[1]
@@ -33,13 +35,28 @@ bot.message(with_text: 'money') do |event|
   event.respond money.amount.to_s
 end
 
-# money+100 という発言があったらそのチャンネルで キャルの現在の所持金に100足した数 を発言する
-bot.message(with_text: 'money+100') do |event|
+# money+数字 という発言があったらそのチャンネルで キャルの現在の所持金に数字足した数 を発言する
+# /.../ はrubyの正規表現 正規表現に一致したときだけ呼ばれる
+bot.message(contains: /money\+.[0-9]*/) do |event|
+  # /()/  の()の中にマッチした部分を取得してInteger型に変換して変数incrementに代入する
+  increment = event.message.content.match(/money\+([0-9].*)/)[1].to_i
   money = Money[1]
-  money.set(:amount => money.amount+100)
+  money.set(:amount => money.amount+increment)
   money.save
   event.respond money.amount.to_s
 end
+
+# money+数字 という発言があったらそのチャンネルで キャルの現在の所持金に数字ひいた数 を発言する
+# /.../ はrubyの正規表現 正規表現に一致したときだけ呼ばれる
+bot.message(contains: /money\-.[0-9]*/) do |event|
+  # /()/  の()の中にマッチした部分を取得してInteger型に変換して変数incrementに代入する
+  increment = event.message.content.match(/money\-([0-9].*)/)[1].to_i
+  money = Money[1]
+  money.set(:amount => money.amount-increment)
+  money.save
+  event.respond money.amount.to_s
+end
+
 
 # kyaru という発言があったらそのチャンネルで 殺すぞ……！？ と発言する
 bot.message(with_text: 'kyaru') do |event|
