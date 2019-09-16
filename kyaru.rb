@@ -29,7 +29,7 @@ bot.message(with_text: 'neko') do |event|
   event.respond 'あたしの下僕にしてあげよっか……♪'
 end
 
-# dubai という発言があったらそのチャンネルで ドバイわよ！ 画像を発言する
+# dubai という発言があったらそのチャンネルで ドバイわよ！ の画像を発言する
 bot.message(with_text: 'dubai') do |event|
   event.respond 'https://gyazo.com/4852e37e314b6a18467227bd569283a0'
 end
