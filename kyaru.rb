@@ -56,6 +56,11 @@ bot.message(with_text: 'neko') do |event|
   event.respond 'あたしの下僕にしてあげよっか……♪'
 end
 
+# oide という発言があったらそのチャンネルで ちょっとはなれてよ... と発言する
+bot.message(with_text: 'oide') do |event|
+  event.respond 'ちょっ、はなれてよ殺すわよっ！？'
+end
+
 # 定期的な処理をする部分
 previous = Time.new
 bot.heartbeat do |event|
@@ -67,10 +72,6 @@ bot.heartbeat do |event|
   end
 end
 
-# oide という発言があったらそのチャンネルで ちょっとはなれてよ... と発言する
-bot.message(with_text: 'oide') do |event|
-  event.respond 'ちょっ、はなれてよ殺すわよっ！？'
-end
 
 bot.run
 
