@@ -61,9 +61,9 @@ bot.message(with_text: 'oide') do |event|
   event.respond 'ちょっ、はなれてよ殺すわよっ！？'
 end
 
-# dubai という発言があったらそのチャンネルで ドバイわよ！ と発言する
+# dubai という発言があったらそのチャンネルで ドバイわよ！ の画像を発言する
 bot.message(with_text: 'dubai') do |event|
-  event.respond 'ドバイわよ！'
+  event.respond 'https://gyazo.com/4852e37e314b6a18467227bd569283a0'
 end
 
 # 定期的な処理をする部分
