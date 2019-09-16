@@ -41,3 +41,5 @@ bot.heartbeat do |event|
 end
 
 bot.run
+
+# 危ないコメント
