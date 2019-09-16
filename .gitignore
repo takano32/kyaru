@@ -1,6 +1,5 @@
 *.gem
 *.rbc
-Gemfile.lock
 /.config
 config.yml
 /coverage/
