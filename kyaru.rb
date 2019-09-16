@@ -33,7 +33,7 @@ bot.message(with_text: 'money') do |event|
   event.respond money.amount.to_s
 end
 
-# money という発言があったらそのチャンネルで キャルの現在の所持金 を発言する
+# money+100 という発言があったらそのチャンネルで キャルの現在の所持金に100足した数 を発言する
 bot.message(with_text: 'money+100') do |event|
   money = Money[1]
   money.set(:amount => money.amount+100)
