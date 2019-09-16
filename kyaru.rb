@@ -20,14 +20,9 @@ bot = Discordrb::Bot.new token: discord_token
 db  = Sequel.connect postgres_url
 
 # キャルの所持金を定義する
-db.create_table :money do
-  primary_key   :id
-  # 所持金
-  Integer       :amount
-end
 class Money < Sequel::Model; end
 money = Money[1]
-unless money?
+unless money
   money = Money.new(:amount => 0)
   money.save
 end
@@ -35,6 +30,14 @@ end
 # money という発言があったらそのチャンネルで キャルの現在の所持金 を発言する
 bot.message(with_text: 'money') do |event|
   money = Money[1]
+  event.respond money.amount.to_s
+end
+
+# money+100 という発言があったらそのチャンネルで キャルの現在の所持金に100足した数 を発言する
+bot.message(with_text: 'money+100') do |event|
+  money = Money[1]
+  money.set(:amount => money.amount+100)
+  money.save
   event.respond money.amount.to_s
 end
 
@@ -53,6 +56,11 @@ bot.message(with_text: 'neko') do |event|
   event.respond 'あたしの下僕にしてあげよっか……♪'
 end
 
+# oide という発言があったらそのチャンネルで ちょっとはなれてよ... と発言する
+bot.message(with_text: 'oide') do |event|
+  event.respond 'ちょっ、はなれてよ殺すわよっ！？'
+end
+
 # dubai という発言があったらそのチャンネルで ドバイわよ！ と発言する
 bot.message(with_text: 'dubai') do |event|
   event.respond 'ドバイわよ！'
@@ -69,10 +77,6 @@ bot.heartbeat do |event|
   end
 end
 
-# oide という発言があったらそのチャンネルで ちょっとはなれてよ... と発言する
-bot.message(with_text: 'oide') do |event|
-  event.respond 'ちょっ、はなれてよ殺すわよっ！？'
-end
 
 bot.run
 
