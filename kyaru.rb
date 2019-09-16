@@ -46,3 +46,5 @@ bot.message(with_text: 'oide') do |event|
 end
 
 bot.run
+
+# 危ないコメント   
