@@ -40,4 +40,9 @@ bot.heartbeat do |event|
   end
 end
 
+# oide という発言があったらそのチャンネルで ちょっとはなれてよ... と発言する
+bot.message(with_text: 'oide') do |event|
+  event.respond 'ちょっ、はなれてよ殺すわよっ！？'
+end
+
 bot.run
