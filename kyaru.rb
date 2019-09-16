@@ -32,7 +32,7 @@ end
 # money という発言があったらそのチャンネルで キャルの現在の所持金 を発言する
 bot.message(with_text: 'money') do |event|
   money = Money[1]
-  event.respond money.amount.to_s
+  event.respond money.amount.to_s + "ルピ"
 end
 
 # money+数字 という発言があったらそのチャンネルで キャルの現在の所持金に数字足した数 を発言する
@@ -43,7 +43,7 @@ bot.message(contains: /money\+.[0-9]*/) do |event|
   money = Money[1]
   money.set(:amount => money.amount+increment)
   money.save
-  event.respond money.amount.to_s
+  event.respond money.amount.to_s + "ルピ"
 end
 
 # money+数字 という発言があったらそのチャンネルで キャルの現在の所持金に数字ひいた数 を発言する
@@ -54,7 +54,7 @@ bot.message(contains: /money\-.[0-9]*/) do |event|
   money = Money[1]
   money.set(:amount => money.amount-increment)
   money.save
-  event.respond money.amount.to_s
+  event.respond money.amount.to_s + "ルピ"
 end
 
 
