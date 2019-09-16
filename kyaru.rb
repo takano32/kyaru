@@ -29,6 +29,11 @@ bot.message(with_text: 'neko') do |event|
   event.respond 'あたしの下僕にしてあげよっか……♪'
 end
 
+# dubai という発言があったらそのチャンネルで ドバイわよ！ と発言する
+bot.message(with_text: 'dubai') do |event|
+  event.respond 'ドバイわよ！'
+end
+
 # 定期的な処理をする部分
 previous = Time.new
 bot.heartbeat do |event|
