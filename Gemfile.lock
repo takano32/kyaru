@@ -13,7 +13,7 @@ GEM
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     event_emitter (0.2.6)
-    ffi (1.11.1)
+    ffi (1.11.1-x64-mingw32)
     http-accept (1.7.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
@@ -23,13 +23,16 @@ GEM
     netrc (0.11.0)
     opus-ruby (1.0.1)
       ffi
+    pg (1.1.4-x64-mingw32)
     rbnacl (3.4.0)
       ffi
-    rest-client (2.1.0)
+    rest-client (2.1.0-x64-mingw32)
+      ffi (~> 1.9)
       http-accept (>= 1.7.0, < 2.0)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    sequel (5.24.0)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.6)
@@ -39,10 +42,12 @@ GEM
       websocket
 
 PLATFORMS
-  ruby
+  x64-mingw32
 
 DEPENDENCIES
   discordrb
+  pg
+  sequel
 
 BUNDLED WITH
-   1.11.2
+   1.17.2

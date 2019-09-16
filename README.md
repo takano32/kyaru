@@ -3,6 +3,15 @@
 ## 開発に参加する
  - https://scrapbox.io/neet/kyaru
  
+ 
+### ブランチ名のルール
+ - 既存機能の修正
+   - fix/修正内容
+ - 新機能の追加
+   - feature/新機能の名前
+ - その他テストなど
+   - test/てすと
+ 
 
 ## kyaruってなに
 
