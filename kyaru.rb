@@ -122,8 +122,8 @@ bot.heartbeat do |event|
     bot.send_message('613223157423276053', 'https://gyazo.com/0e4a0ca3bf8bcfd46cd14e078da3fbba')
     bot.send_message '時給です'
     bot.send_message 'money+1000ルピ'
+    previous = now
   end
-  previous = now
 end
 
 
