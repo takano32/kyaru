@@ -9,3 +9,4 @@ refreshenv
 ridk install 1 2 3
 gem install bundler
 bundle install
+bundle update --bundler
