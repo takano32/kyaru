@@ -1,0 +1,28 @@
+version: 2.0
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.6.1-node-browsers
+    steps:
+      # githubからソースコードをチェックアウトする
+      - checkout
+      # 最新のbundlerをインストールする
+      - run: sudo gem update --system
+      # bundle installのキャシュが既にあればそれを取ってくる
+      - restore_cache:
+          keys:
+          - gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+          - gem-cache-{{ arch }}-{{ .Branch }}
+          - gem-cache
+      # bundle installを実行する
+      - run: bundle check --path=vendor/bundle || bundle install --path vendor/bundle --clean --jobs 4 --retry 3
+      # bundle installのデータをキャッシュする
+      - save_cache:
+          key: gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+          paths:
+          - ./vendor/bundle
+      # Syntax checkを実行する
+      - run: find . -regex '.*\.rb$' | grep -vF './vendor/bundle/' | xargs -n 1 ruby -c
+      # Rubocopを実行する
+      #- run: bundle exec rubocop
+
