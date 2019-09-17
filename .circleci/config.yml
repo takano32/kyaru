@@ -21,6 +21,8 @@ jobs:
           key: gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
           paths:
           - ./vendor/bundle
+      # Syntax checkを実行する
+      - run: find . -regex '.*\.rb$' | grep -vF './vendor/bundle/' | xargs -n 1 ruby -c
       # Rubocopを実行する
-      - run: bundle exec rubocop
+      #- run: bundle exec rubocop
 
