@@ -16,7 +16,6 @@ rescue
   # 設定ファイルがなかったら環境変数を読み込む
   config['discord_token'] = ENV['DISCORD_TOKEN']
   config['database_url']  = ENV['DATABASE_URL']
-end
 
 require_relative './lib/kyaru'
 Kyaru::Baby.config(config)
