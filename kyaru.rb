@@ -9,19 +9,29 @@ require 'yaml'
 discord_token = ''
 postgres_url  = ''
 
+config = {}
 begin
   # yaml 形式の設定ファイルを読み込む
-  config = YAML.load_file("config.yml")
-  discord_token = config['discord_token']
-  postgres_url  = config['database_url']
+  yaml = YAML.load_file("config.yml")
+  config['discord_token'] = yaml['discord_token']
+  config['database_url']  = yaml['database_url']
 rescue
   # 設定ファイルがなかったら環境変数を読み込む
-  discord_token = ENV['DISCORD_TOKEN']
-  postgres_url  = ENV['DATABASE_URL']
+  config['discord_token'] = ENV['DISCORD_TOKEN']
+  config['database_url']  = ENV['DATABASE_URL']
 end
 
-bot = Discordrb::Bot.new token: discord_token
-db  = Sequel.connect postgres_url
+require_relative './lib/kyaru'
+baby = Kyaru::Baby.config(config)
+baby = Kyaru::Baby.instance
+
+bot = baby.bot
+db  = baby.db
+
+# Kyaru::Message
+# 定型文の実装をアダプターパターンで押し込める
+message = Kyaru::Message.new(bot)
+message.apply
 
 #
 # 所持金関係の実装
@@ -94,11 +104,5 @@ bot.heartbeat do |event|
     previous = now
   end
 end
-
-# Kyaru::Message
-# 定型文の実装をアダプターパターンで押し込める
-require_relative 'lib/kyaru'
-message = Kyaru::Message.new(bot)
-message.apply
 
 bot.run
