@@ -6,6 +6,7 @@ class Kyaru::Message
 
   def apply
     message
+    message_baby
     message_suumo
   end
 
@@ -44,6 +45,18 @@ class Kyaru::Message
       event.respond 'https://gyazo.com/4852e37e314b6a18467227bd569283a0'
     end
 
+  end
+
+  def message_baby
+    @bot.message(with_text: 'bot') do |event|
+      baby = Kyaru::Baby.instance
+      event.respond baby.bot.to_s
+    end
+
+    @bot.message(with_text: 'db') do |event|
+      baby = Kyaru::Baby.instance
+      event.respond baby.db.to_s
+    end
   end
 
   def message_suumo

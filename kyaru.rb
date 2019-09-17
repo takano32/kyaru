@@ -21,8 +21,18 @@ rescue
   config['database_url']  = ENV['DATABASE_URL']
 end
 
-bot = Discordrb::Bot.new token: config['discord_token']
-db  = Sequel.connect config['database_url']
+require_relative './lib/kyaru'
+baby = Kyaru::Baby.config(config)
+baby = Kyaru::Baby.instance
+
+bot = baby.bot
+db  = baby.db
+
+# Kyaru::Message
+# 定型文の実装をアダプターパターンで押し込める
+# require_relative 'lib/kyaru'
+message = Kyaru::Message.new(bot)
+message.apply
 
 #
 # 所持金関係の実装
@@ -95,11 +105,5 @@ bot.heartbeat do |event|
     previous = now
   end
 end
-
-# Kyaru::Message
-# 定型文の実装をアダプターパターンで押し込める
-require_relative 'lib/kyaru'
-message = Kyaru::Message.new(bot)
-message.apply
 
 bot.run
