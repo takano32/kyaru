@@ -1,7 +1,8 @@
 
 class Kyaru::Message
-  def initialize(bot)
-    @bot = bot
+  def initialize
+    baby = Kyaru::Baby.instance
+    @bot = baby.bot
   end
 
   def apply

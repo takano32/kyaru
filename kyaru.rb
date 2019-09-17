@@ -6,9 +6,6 @@ require 'yaml'
 # 設定のロード
 #
 
-discord_token = ''
-postgres_url  = ''
-
 config = {}
 begin
   # yaml 形式の設定ファイルを読み込む
@@ -22,7 +19,7 @@ rescue
 end
 
 require_relative './lib/kyaru'
-baby = Kyaru::Baby.config(config)
+Kyaru::Baby.config(config)
 baby = Kyaru::Baby.instance
 
 bot = baby.bot
@@ -30,7 +27,7 @@ db  = baby.db
 
 # Kyaru::Message
 # 定型文の実装をアダプターパターンで押し込める
-message = Kyaru::Message.new(bot)
+message = Kyaru::Message.new
 message.apply
 
 #
