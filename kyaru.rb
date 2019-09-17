@@ -58,6 +58,13 @@ bot.message(contains: /money\-.[0-9]*/) do |event|
   event.respond money.amount.to_s + "ルピ"
 end
 
+# money:kaizuka という発言があったらそのチャンネルで 貝塚レートで変換したキャルの現在の所持金 を発言する
+bot.message(with_text: 'money:kaizuka') do |event|
+  money = Money[1]
+  money_kaizuka = money.amount * 35
+  event.respond money_kaizuka.to_s + "貝塚ルピ"
+end
+
 
 # kyaru という発言があったらそのチャンネルで 殺すぞ……！？ と発言する
 bot.message(with_text: 'kyaru') do |event|
