@@ -29,6 +29,10 @@ db  = baby.db
 # 定型文の実装をアダプターパターンで押し込める
 message = Kyaru::Message.new
 message.apply
+# Kyaru::Heatbeat
+# 定期的な処理をアダプターパターンで押し込める
+heatbeat = Kyaru::Heartbeat.new
+heatbeat.apply
 
 #
 # 所持金関係の実装
@@ -78,28 +82,6 @@ bot.message(with_text: 'money:kaizuka') do |event|
   money = Money[money_primary_key]
   money_kaizuka = money.amount * 35
   event.respond money_kaizuka.to_s + "貝塚ルピ"
-end
-
-#
-# 定期的な処理の実装
-#
-
-previous = Time.new
-hourly_wage = 1000
-bot.heartbeat do |event|
-  # 1時間に一回やりたい処理
-  now = Time.new
-  if previous.hour < now.hour
-    # 9時から18時まで働く
-    if 9 < new.hour && now.hour < 18
-      # 時給を与える
-      money = Money[money_primary_key]
-      money.set(:amount => money.amount+hourly_wage)
-      money.save
-      bot.send_message('613223157423276053', "キャルは時給#{hourly_wage}円を得た")
-    end
-    previous = now
-  end
 end
 
 bot.run
