@@ -68,7 +68,7 @@ end
 
 # money:kaizuka という発言があったらそのチャンネルで 貝塚レートで変換したキャルの現在の所持金 を発言する
 bot.message(with_text: 'money:kaizuka') do |event|
-  money = Money[1]
+  money = Money[money_primary_key]
   money_kaizuka = money.amount * 35
   event.respond money_kaizuka.to_s + "貝塚ルピ"
 end
@@ -90,6 +90,7 @@ end
 # hoge という発言があったらそのチャンネルで huga と発言する
 bot.message(with_text: 'hoge') do |event|
   event.respond 'fuga'
+end
 
 # neko という発言があったらそのチャンネルで あたしの下僕にしてあげよっか……♪ と発言する
 bot.message(with_text: 'neko') do |event|
