@@ -18,6 +18,7 @@ rescue
   config['database_url']  = ENV['DATABASE_URL']
 end
 
+# キャルを初期化する
 require_relative './lib/kyaru'
 Kyaru::Baby.config(config)
 baby = Kyaru::Baby.instance
