@@ -108,7 +108,7 @@ SUUMO=[
 # あ！スーモ！という発言があったらそのチャンネルでスーモっぽい発言をする
 bot.message(with_text: 'あ！スーモ！') do |event|
   sumo = SUUMO.shuffle.join('')
-  event.send_message "#{sumo}"
+  event.respond "#{sumo}"
 end
 
 #
@@ -116,12 +116,12 @@ end
 #
 previous = Time.new
 bot.heartbeat do |event|
-  # 1時間に一回 #機械 チャンネルで ヤバいわよ！！ 画像を発言する（時報機能）
+  # 1時間に一回やりたい処理
   now = Time.new
   if previous.hour < now.hour then
+    # #機械 チャンネルで ヤバいわよ！！ 画像を発言する（時報機能）
     bot.send_message('613223157423276053', 'https://gyazo.com/0e4a0ca3bf8bcfd46cd14e078da3fbba')
-    bot.send_message '時給です'
-    bot.send_message 'money+1000ルピ'
+    # TODO 時給を与える
     previous = now
   end
 end
