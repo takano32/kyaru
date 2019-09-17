@@ -8,10 +8,6 @@ jobs:
       - checkout
       # 最新のbundlerをインストールする
       - run: sudo gem update --system
-      - run: sudo gem uninstall bundler
-      - run: sudo gem update --system
-      - run: sudo rm /usr/local/bin/bundle
-      - run: sudo rm /usr/local/bin/bundler
       - run: sudo gem install bundler
       # bundle installのキャシュが既にあればそれを取ってくる
       - restore_cache:
