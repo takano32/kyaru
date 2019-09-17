@@ -28,7 +28,6 @@
 
 
 ## どう動かすの？
-- `cp config.sample.yml config.yml`
-- config.yml を編集する
+- config.yml を教えてもらう
 - `bundle install`
 - `bundle exec ruby kyaru.rb`
