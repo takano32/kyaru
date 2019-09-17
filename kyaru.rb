@@ -30,7 +30,6 @@ db  = baby.db
 
 # Kyaru::Message
 # 定型文の実装をアダプターパターンで押し込める
-# require_relative 'lib/kyaru'
 message = Kyaru::Message.new(bot)
 message.apply
 
