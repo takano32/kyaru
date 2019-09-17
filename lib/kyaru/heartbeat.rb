@@ -29,7 +29,7 @@ class Kyaru::Heartbeat
           @money.save
           @bot.send_message('613223157423276053', "キャルは時給#{hourly_wage}円を得た")
           # ストレスが溜まる
-          @stress.set(:amount => @stress.amount-1)
+          @stress.set(:amount => @stress.amount+1)
           @stress.save
           @bot.send_message('613223157423276053', "キャルは#{@stress.amount}ストレスをためている")
         end
