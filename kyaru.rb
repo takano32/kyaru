@@ -126,17 +126,23 @@ end
 #
 # 定期的な処理の実装
 #
+
 previous = Time.new
+hourly_wage = 1000
 bot.heartbeat do |event|
   # 1時間に一回やりたい処理
   now = Time.new
-  if previous.hour < now.hour then
-    # #機械 チャンネルで ヤバいわよ！！ 画像を発言する（時報機能）
-    bot.send_message('613223157423276053', 'https://gyazo.com/0e4a0ca3bf8bcfd46cd14e078da3fbba')
-    # TODO 時給を与える
+  if previous.hour < now.hour
+    # 9時から18時まで働く
+    if 9 < new.hour && now.hour < 18
+      # 時給を与える
+      money = Money[money_primary_key]
+      money.set(:amount => money.amount+hourly_wage)
+      money.save
+      bot.send_message('613223157423276053', "キャルは時給#{hourly_wage}円を得た")
+    end
     previous = now
   end
 end
-
 
 bot.run
