@@ -75,4 +75,11 @@ bot.message(with_text: 'money:kaizuka') do |event|
   event.respond money_kaizuka.to_s + "貝塚ルピ"
 end
 
+bot.message(with_text: '今日の分くれ') do |event|
+  money = money = Kyaru::Baby::Money[money_primary_key]
+  money.set(:amount => money.amount- 5000)
+  money.save
+  event.respond '今日も楽しんできてね'
+end
+
 bot.run
