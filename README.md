@@ -7,9 +7,11 @@
 ### ブランチ名のルール
  - 既存機能の修正
    - fix/修正内容
+ - リファクタリング
+   - refactor/リファクタリング内容
  - 新機能の追加
    - feature/新機能の名前
- - その他テストなど
+ - その他テスト用ブランチなど
    - test/てすと
  
 
@@ -26,7 +28,6 @@
 
 
 ## どう動かすの？
-- `cp config.sample.yml config.yml`
-- config.yml を編集する
+- config.yml を教えてもらう
 - `bundle install`
 - `bundle exec ruby kyaru.rb`
