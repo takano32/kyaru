@@ -10,7 +10,7 @@ rescue
 end
 
 db = Sequel.connect database_url
-db.create_table :stress do
+db.create_table :stresses do
   primary_key   :id
   Float         :amount
 end
