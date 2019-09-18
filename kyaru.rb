@@ -30,10 +30,12 @@ db  = baby.db
 # 定型文の実装をアダプターパターンで押し込める
 message = Kyaru::Message.new
 message.apply
+
 # Kyaru::Heatbeat
 # 定期的な処理をアダプターパターンで押し込める
 heatbeat = Kyaru::Heartbeat.new
 heatbeat.apply
+
 
 #
 # 所持金関係の実装
@@ -73,6 +75,13 @@ bot.message(with_text: 'money:kaizuka') do |event|
   money = Kyaru::Baby::Money[money_primary_key]
   money_kaizuka = money.amount * 35
   event.respond money_kaizuka.to_s + "貝塚ルピ"
+end
+
+bot.message(with_text: '今日の分くれ') do |event|
+  money = money = Kyaru::Baby::Money[money_primary_key]
+  money.set(:amount => money.amount- 5000)
+  money.save
+  event.respond '今日も楽しんできてね'
 end
 
 bot.run
