@@ -3,8 +3,8 @@ class Kyaru::Heartbeat
     baby = Kyaru::Baby.instance
     @bot = baby.bot
     @db = baby.db
-    @money = Kyaru::Baby::Money[1]
-    @stress = Kyaru::Baby::Stress[1]
+    @money = baby.money
+    @stress = baby.stress
   end
 
   def apply
