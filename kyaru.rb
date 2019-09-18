@@ -30,10 +30,12 @@ db  = baby.db
 # 定型文の実装をアダプターパターンで押し込める
 message = Kyaru::Message.new
 message.apply
+
 # Kyaru::Heatbeat
 # 定期的な処理をアダプターパターンで押し込める
 heatbeat = Kyaru::Heartbeat.new
 heatbeat.apply
+
 
 #
 # 所持金関係の実装
