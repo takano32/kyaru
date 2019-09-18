@@ -20,7 +20,8 @@ class Kyaru::Heartbeat
     hourly_wage = 1000
     @bot.heartbeat do |event|
       # 1時間に1回やりたい処理
-      now = Time.new
+      # Heroku上のTimeはUTCなので+9時間する
+      now = Time.new + (60*60*9)
       if previous.hour < now.hour
         @bot.send_message('613223157423276053', "#{now.hour}時になった")
         # 9時から22時まで働く
