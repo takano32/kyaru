@@ -50,7 +50,7 @@ class Kyaru::Money
 
     # 今日の分くれ という発言があったらキャルの所持金を5000円減らす
     @bot.message(with_text: '今日の分くれ') do |event|
-      @money.set(:amount => money.amount - 5000)
+      @money.set(:amount => @money.amount - 5000)
       @money.save
       event.respond '今日も楽しんできてね'
     end
