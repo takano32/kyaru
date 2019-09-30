@@ -27,14 +27,14 @@ class Kyaru::Heartbeat
       # 1時間に1回やりたい処理
 
       # Heroku上のTimeはUTCなので+9時間する
-      now = Time.new + (60 * 60)
-      now = now.getlocal('+09:00')
+      one_hour_after = Time.new + (60 * 60)
+      one_hour_after = one_hour_after.getlocal('+09:00')
 
-      if one_hour_ago.hour < now.hour
-        @bot.send_message(room, "#{now.hour}時になった")
+      if one_hour_ago.hour < one_hour_after.hour
+        @bot.send_message(room, "#{one_hour_after.hour}時になった")
 
         # 9時から22時まで働く
-        if 9 < now.hour && now.hour < 22
+        if 9 < one_hour_after.hour && one_hour_after.hour < 22
           @bot.send_message(room, "キャルは働いている")
 
           # 時給を与える
@@ -49,7 +49,7 @@ class Kyaru::Heartbeat
         end
 
         # 23時から8時まで寝る
-        if 23 < now.hour || now.hour < 8
+        if 23 < one_hour_after.hour || one_hour_after.hour < 8
           @bot.send_message(room, "キャルは寝ている")
 
           # 寝るとストレスが減る
@@ -57,7 +57,7 @@ class Kyaru::Heartbeat
           @stress.save
           @bot.send_message(room, "キャルのストレスが#{@stress.amount}になった")
         end
-        one_hour_ago = now
+        one_hour_ago = one_hour_after
       end
     end
   end
